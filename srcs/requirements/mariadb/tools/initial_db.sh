@@ -1,9 +1,13 @@
 #!/bin/sh
 
 if [ ! -d "/var/lib/mysql/${MYSQL_DATABASE}" ]; then
-    echo "[mysqld]" > /etc/mysql/mariadb.conf.d/99-bind.cnf
-    echo "bind-address=0.0.0.0" >> /etc/mysql/mariadb.conf.d/99-bind.cnf
-
+    # Create custom configuration file with higher priority
+    echo "[mysqld]" > /etc/mysql/mariadb.conf.d/99-custom.cnf
+    echo "bind-address=0.0.0.0" >> /etc/mysql/mariadb.conf.d/99-custom.cnf
+    echo "port=3306" >> /etc/mysql/mariadb.conf.d/99-custom.cnf
+    
+    # Also override the main server configuration to ensure it takes effect
+    sed -i 's/^bind-address\s*=.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf 2>/dev/null || true
     
     chown -R mysql:mysql /var/lib/mysql
 
@@ -19,4 +23,4 @@ FLUSH PRIVILEGES;
 EOF
 fi
 
-exec mysqld_safe --user=mysql --datadir=/var/lib/mysql
+exec mysqld_safe --user=mysql --datadir=/var/lib/mysql --bind-address=0.0.0.0
