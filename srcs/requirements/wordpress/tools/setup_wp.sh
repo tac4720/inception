@@ -1,13 +1,11 @@
 #!/bin/sh
 
-# MariaDB の起動を待機
 echo "[INFO] Waiting for MariaDB to be ready..."
 until mysqladmin ping -h"mariadb" --silent; do
   echo "[INFO] MariaDB is unavailable - sleeping"
   sleep 2
 done
 
-# WordPress 初期化
 if [ ! -f "wp-config.php" ]; then
     echo "[INFO] Downloading WordPress..."
     wp core download --allow-root
@@ -36,5 +34,4 @@ else
     echo "[INFO] WordPress already configured."
 fi
 
-# PHP-FPM 起動
 exec php-fpm7.4 -F
