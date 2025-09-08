@@ -2,7 +2,8 @@ FROM debian:bullseye-slim
 
 RUN apt-get update && \
     apt-get install -y php7.4-fpm php7.4-mysql mariadb-client curl && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /run/php
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x wp-cli.phar && \
