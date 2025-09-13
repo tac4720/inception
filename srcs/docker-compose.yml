@@ -64,13 +64,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/tac/data/mariadb'
+      device: '/home/thashimo/data/mariadb'
   wordpress_files:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/tac/data/wordpress'
+      device: '/home/thashimo/data/wordpress'
 
 networks:
   inception:
