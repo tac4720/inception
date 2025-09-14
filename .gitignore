@@ -1,0 +1,53 @@
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Environment variables (keep template but ignore actual values)
+# srcs/.env should be kept but can contain sensitive data
+# Add specific sensitive files here if needed
+.env
+# Docker volumes data (if stored locally)
+/home/*/data/
+
+# Secrets directory and files
+secrets/
+*.key
+*.crt
+*.pem
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Runtime files
+*.pid
+*.lock
+
+# Cache
+.cache/
+*.cache

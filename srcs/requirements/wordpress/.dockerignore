@@ -1,0 +1,30 @@
+# Development files
+.git
+.gitignore
+.gitattributes
+.claude
+
+# Documentation
+README.md
+*.md
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# WordPress specific
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-config.php.bak
